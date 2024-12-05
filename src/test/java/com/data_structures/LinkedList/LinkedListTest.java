@@ -1,4 +1,4 @@
-package com.data_structures;
+package com.data_structures.LinkedList;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class LinkedListTest 
 {
     /**
      * Rigorous Test :-)
