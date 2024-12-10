@@ -9,31 +9,31 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class LinkedListTest 
+public class SinglyLinkedListTest 
 {
     /**
      * Rigorous Test :-)
      */
     @Test
     public void getSize_whenEmpty_shouldReturnZero(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
         assertEquals(0, list.getSize());
     }
     @Test
     public void isEmpty_whenEmpty_shouldReturnTrue(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
         assertTrue(list.isEmpty());
     }
     @Test
     public void contains_whenNotPresent_shouldReturnFalse(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addLast(2);
         assertFalse(list.contains(5));
     }   
     @Test
     public void contains_whenPresent_shouldReturnTrue(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addLast(2);
         assertTrue(list.contains(1));

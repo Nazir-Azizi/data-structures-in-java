@@ -3,7 +3,7 @@ package com.data_structures.LinkedList;
 import java.util.Collection;
 import java.util.Iterator;
 
-class LinkedList<T extends Object>{
+class SinglyLinkedList<T extends Object>{
     /*
      * Node is an inner class inside LinkedList class
      * It is declared as private so that it wouldn't be accessed from
