@@ -3,7 +3,7 @@ package com.data_structures.LinkedList;
 import java.util.Collection;
 import java.util.Iterator;
 
-class SinglyLinkedList<T extends Object>{
+class SinglyLinkedList<T> implements LinkedList<T>{
     /*
      * Node is an inner class inside LinkedList class
      * It is declared as private so that it wouldn't be accessed from
@@ -21,7 +21,6 @@ class SinglyLinkedList<T extends Object>{
     private int size = 0;
     // head is the begining of LinkedList
     private Node head = null;
-    private Node tail = null;
 
     public int getSize(){
         return size;
@@ -37,54 +36,48 @@ class SinglyLinkedList<T extends Object>{
      * It works by assigning the head to newNode's next and then
      * assigning newNode to head
      */
-    public boolean addFirst(T data){
+    public void addFirst(T data){
         Node newNode = new Node(data);
         if (head == null){
             head = newNode;
-            tail = newNode;
-            return true;
         }
         newNode.next = head;
         head = newNode;
         size++;
-        return true;
     }
     /*
      * addLast adds the new Node at the end of LinkedList chain
      * First it goes to the end of the list and assign the newNode to
      * the last Node's next
      */
-    public boolean addLast(T data){
+    public void addLast(T data){
         Node newNode = new Node(data);
         if (head == null){
             head = newNode;
-            tail = newNode;
-            return true;
+            return;
         }
         Node current = head;
         while(current.next != null)
             current = current.next;
         current.next = newNode;
-        tail = newNode;
         size++;
-        return true;
     }
     /*
      * addAll method accepts a Collection and then adds
      * all the elements inside that Collection to LinkedList by
      * getting the iterator and iterating over the collection
      */
-    public boolean addAll(Collection<T> collection){
+    public void addAll(Collection<T> collection){
         Iterator<T> it = collection.iterator();
-        Node current = tail;
+        Node current = head;
+        while (current.next != null)
+            current = current.next;
         while(it.hasNext()){
             Node newNode = new Node(it.next());
             current.next = newNode;
             current = newNode;
             size++;
         }
-        tail = current;
-        return true;
     }
     /*
      * insertAtIndex adds new node at the specified location
@@ -99,7 +92,6 @@ class SinglyLinkedList<T extends Object>{
         Node newNode = new Node(data);
         if (head == null){
             head = newNode;
-            tail = newNode;
         }
         else if (location == 1){
             newNode.next = head;
@@ -109,7 +101,6 @@ class SinglyLinkedList<T extends Object>{
             while(current.next != null)
             current = current.next;
             current.next = newNode;
-            tail = newNode;
         }else{
             int count = 1;
             Node current = head;
@@ -134,7 +125,10 @@ class SinglyLinkedList<T extends Object>{
      * returns the data of the last node (tail)
      */
     public T getLast(){
-        return tail.data;
+        Node current = head;
+        while (current.next != null)
+            current = current.next;
+        return current.data;
     }
     /*
      * getAt method gets the data of a node at a specific index
@@ -171,9 +165,6 @@ class SinglyLinkedList<T extends Object>{
     public boolean removeFirst(){
         if (head == null)
             return false;
-        if (size == 1){
-            tail = null;    
-        }
         head = head.next;
         size--;
         return true;
@@ -182,19 +173,17 @@ class SinglyLinkedList<T extends Object>{
      * removeLast removes the last node if it exist
      */
     public boolean removeLast(){
-        if (tail == null)
+        if (head == null)
             return false;
         if (size == 1){
             head = null;
-            tail = null;
-            size--;
-            return true;
         }
-        Node current = head;
-        while (current.next.next != null)
-            current = current.next;
-        current.next = null;
-        tail = current;
+        else{
+            Node current = head;
+            while (current.next.next != null)
+                current = current.next;
+            current.next = null;
+        }
         size--;
         return true;
     }
@@ -231,6 +220,7 @@ class SinglyLinkedList<T extends Object>{
             return false;
         if (head.data == data){
             head = head.next;
+            size--;
             return true;
         }
         Node current = head;
@@ -242,6 +232,7 @@ class SinglyLinkedList<T extends Object>{
         if (current == null)
             return false;
         prevNode.next = current.next;
+        size--;
         return true;
     }
     /*
@@ -252,10 +243,9 @@ class SinglyLinkedList<T extends Object>{
      * node will be distroyed and there will be no refrence variable to
      * refer to the second node and this way all nodes will be destroyed
      */
-    public boolean removeAll(){
+    public void removeAll(){
         head = null;
-        tail = null;
-        return true;
+        size = 0;
     }
     public void reverse(){
         if (head == null || size == 1)
