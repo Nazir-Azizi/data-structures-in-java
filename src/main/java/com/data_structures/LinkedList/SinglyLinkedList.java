@@ -54,6 +54,7 @@ class SinglyLinkedList<T> implements LinkedList<T>{
         Node newNode = new Node(data);
         if (head == null){
             head = newNode;
+            size++;
             return;
         }
         Node current = head;
