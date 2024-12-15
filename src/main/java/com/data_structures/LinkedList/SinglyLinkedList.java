@@ -3,34 +3,8 @@ package com.data_structures.LinkedList;
 import java.util.Collection;
 import java.util.Iterator;
 
-class SinglyLinkedList<T> implements LinkedList<T>{
-    /*
-     * Node is an inner class inside LinkedList class
-     * It is declared as private so that it wouldn't be accessed from
-     * anywhere else but inside LinkedList class
-     */
-    private class Node{
-        T data;
-        Node next;
-        Node(T data){
-            this.data = data;
-            this.next = null;
-        }
-    }
-    // size keeps track of the number of nodes presesnt inside the LinkedList
-    private int size = 0;
-    // head is the begining of LinkedList
-    private Node head = null;
-
-    public int getSize(){
-        return size;
-    }
-    /*
-     * returns if the LinkedList is empty
-     */
-    public boolean isEmpty(){
-        return head == null;
-    }
+class SinglyLinkedList<T extends Object> extends LinkedList<T>{
+    
     /*
      * addFirst adds the new Node at the beginning of LinkedList
      * It works by assigning the head to newNode's next and then
@@ -116,12 +90,7 @@ class SinglyLinkedList<T> implements LinkedList<T>{
         size++;
         return true;
     }
-    /*
-     * returns the data of the first node (head)
-     */
-    public T getFirst(){
-        return head.data;
-    }
+    
     /*
      * returns the data of the last node (tail)
      */
@@ -146,19 +115,6 @@ class SinglyLinkedList<T> implements LinkedList<T>{
             count++;
         }
         return current.data;
-    }
-    /*
-     * contains checks if a there exist any element 
-     * with the specified data
-     */
-    public boolean contains(T data){
-        Node current = head;
-        while (current != null){
-            if (current.data.equals(data))
-                return true;
-            current = current.next;
-        }
-        return false;
     }
     /*
      * removeFirst removes the first node if it exists
@@ -236,18 +192,7 @@ class SinglyLinkedList<T> implements LinkedList<T>{
         size--;
         return true;
     }
-    /*
-     * removeAll removes all the nodes form the linkedList
-     * it will initalize both head and tail to null and other
-     * nodes will be distroyed by GC because there will be no
-     * refrence variable to refer to the first node, so the first
-     * node will be distroyed and there will be no refrence variable to
-     * refer to the second node and this way all nodes will be destroyed
-     */
-    public void removeAll(){
-        head = null;
-        size = 0;
-    }
+    
     public void reverse(){
         if (head == null || size == 1)
             return;
@@ -265,20 +210,5 @@ class SinglyLinkedList<T> implements LinkedList<T>{
         }
         current.next = prev;
         head = current;
-    }
-    /*
-     * toString method is overriden to print all elements to console
-     * it iterates over the elements until it reaches null
-     */
-    @Override
-    public String toString(){
-        Node current = head;
-        String str = "";
-        while (current != null){
-            str += current.data + " -> ";
-            current = current.next;
-        }
-        str += "null";
-        return str;
     }
 }

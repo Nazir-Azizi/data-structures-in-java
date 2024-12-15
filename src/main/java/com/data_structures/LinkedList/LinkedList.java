@@ -2,17 +2,93 @@ package com.data_structures.LinkedList;
 
 import java.util.Collection;
 
-public interface LinkedList<T extends Object> {
+public abstract class LinkedList<T extends Object> {
+    
+    
     /*
-     * getSize is supposed to return the 
-     * size (number of Nodes) of the linkedList
+     * Node is an inner class inside LinkedList class
+     * It is declared as private so that it wouldn't be accessed from
+     * anywhere else but inside LinkedList class
      */
-    public abstract int getSize();
+    public class Node{
+        T data;
+        Node next;
+        Node prev;
+        Node(T data){
+            this.data = data;
+            this.next = null;
+            this.prev = null;
+        }
+    }
+    // size keeps track of the number of nodes presesnt inside the LinkedList
+    public int size = 0;
+    // head is the begining of LinkedList
+    public Node head = null;
+    // tail is the tail of the linkedList
+    public Node tail = null;
+
     /*
-     * isEmpty is supposed to return a boolean value
-     * indicating whether the LinkedList is empty
+     * getSize returns the number of nodes present in the linkedList
      */
-    public abstract boolean isEmpty();
+    public int getSize(){
+        return size;
+    }
+    /*
+     * returns if the LinkedList is empty
+     */
+    public boolean isEmpty(){
+        return head == null;
+    }
+
+    /*
+     * returns the data of the first node (head)
+     */
+    public T getFirst(){
+        if (head == null)
+            return null;
+        return head.data;
+    }
+    /*
+     * contains checks if there exist any element 
+     * with the specified data
+     */
+    public boolean contains(T data){
+        Node current = head;
+        while (current != null){
+            if (current.data.equals(data))
+                return true;
+            current = current.next;
+        }
+        return false;
+    }
+    /*
+     * removeAll removes all the nodes form the linkedList
+     * it will initalize both head and tail to null and other
+     * nodes will be distroyed by GC because there will be no
+     * refrence variable to refer to the first node, so the first
+     * node will be distroyed and there will be no refrence variable to
+     * refer to the second node and this way all nodes will be destroyed
+     */
+    public void removeAll(){
+        head = null;
+        tail = null;
+        size = 0;
+    }
+    /*
+     * toString method is overriden to print all elements to console
+     * it iterates over the elements until it reaches null
+     */
+    @Override
+    public String toString(){
+        Node current = head;
+        String str = "";
+        while (current != null){
+            str += current.data + " -> ";
+            current = current.next;
+        }
+        str += "null";
+        return str;
+    }
     /*
      * addFirst is supposed to create a node with the 
      * specifed data and adds it to the beginning of
@@ -36,10 +112,6 @@ public interface LinkedList<T extends Object> {
      */
     public abstract boolean insertAtIndex(T data, int location);
     /*
-     * getFirst is supposed to return the first node
-     */
-    public abstract T getFirst();
-    /*
      * getLast is supposed to return the last node
      */
     public abstract T getLast();
@@ -47,11 +119,6 @@ public interface LinkedList<T extends Object> {
      * getAt is supposed to return the node at a specified index
      */
     public abstract T getAt(int index);
-    /*
-     * contains is supposed to return a boolean value
-     * indicating whether a certain data is present in linkedList
-     */
-    public abstract boolean contains(T data);
     /*
      * removeFirst is supposed to remove the first node
      */
@@ -71,16 +138,7 @@ public interface LinkedList<T extends Object> {
      */
     public abstract boolean removeValue(T data);
     /*
-     * removeAll removes all the nodes
-     */
-    public abstract void removeAll();
-    /*
      * reverse is supposed to reverse the linkedList
      */
     public abstract void reverse();
-    /*
-     * toString is supposed to return a string containing
-     * all the data in linkedList
-     */
-    public abstract String toString();
 }
