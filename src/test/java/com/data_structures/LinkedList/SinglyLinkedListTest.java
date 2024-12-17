@@ -124,4 +124,13 @@ public class SinglyLinkedListTest {
         list.insertAtIndex(5, 2);
         assertEquals(5, (int)list.getAt(2));
     }
+    @Test
+    public void insertAtIndex_whenAddedAtEnd_shouldWork(){
+        list.addFirst(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.insertAtIndex(5, 5);
+        assertEquals(5, (int)list.getAt(5));
+    }
 }

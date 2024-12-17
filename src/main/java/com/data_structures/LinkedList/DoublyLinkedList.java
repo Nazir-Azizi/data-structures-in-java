@@ -22,10 +22,6 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         return true;
     }
     @Override
-    public T getLast() {
-        return null;
-    }
-    @Override
     public T getAt(int index){
         return null;
     }

@@ -90,10 +90,16 @@ public abstract class LinkedList<T extends Object> {
         return str;
     }
     /*
-     * addFirst is supposed to create a node with the 
-     * specifed data and adds it to the beginning of
-     * the linkedList
+     * returns the data of the last node (tail)
      */
+    public T getLast(){
+        return tail.data;
+    }
+    /*
+    * addFirst is supposed to create a node with the 
+    * specifed data and adds it to the beginning of
+    * the linkedList
+    */
     public abstract void addFirst(T data);
     /*
      * addLast is supposed to create a node with the 
@@ -111,10 +117,6 @@ public abstract class LinkedList<T extends Object> {
      * in which the data is to be added
      */
     public abstract boolean insertAtIndex(T data, int location);
-    /*
-     * getLast is supposed to return the last node
-     */
-    public abstract T getLast();
     /*
      * getAt is supposed to return the node at a specified index
      */
