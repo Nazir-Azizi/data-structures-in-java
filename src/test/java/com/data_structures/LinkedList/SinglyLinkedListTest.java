@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -16,14 +17,17 @@ public class SinglyLinkedListTest {
      /*
       * test for getSize method
       */
+    LinkedList<Integer> list;
+    @Before
+    public void setUp(){
+        list = new SinglyLinkedList<>();
+    }
     @Test
     public void getSize_whenEmpty_shouldReturnZero(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         assertEquals(0, list.getSize());
     }
     @Test
     public void getSize_whenDateRemoved_shouldWork(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -32,7 +36,6 @@ public class SinglyLinkedListTest {
     }
     @Test
     public void getSize_whenNotEmpty_shouldReturnNoneZero(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -40,7 +43,6 @@ public class SinglyLinkedListTest {
     }
     @Test
     public void getSize_whenListBecomeEmpty_shouldReturnZero(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -53,12 +55,10 @@ public class SinglyLinkedListTest {
      */
     @Test
     public void isEmpty_whenEmpty_shouldReturnTrue(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         assertTrue(list.isEmpty());
     }
     @Test
     public void isEmpty_whenNotEmpty_shouldReturnFalse(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);
@@ -70,14 +70,12 @@ public class SinglyLinkedListTest {
      */
     @Test
     public void contains_whenNotPresent_shouldReturnFalse(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addLast(2);
         assertFalse(list.contains(5));
     }   
     @Test
     public void contains_whenPresent_shouldReturnTrue(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addLast(2);
         assertTrue(list.contains(1));
@@ -88,7 +86,6 @@ public class SinglyLinkedListTest {
      */
     @Test
     public void addFirst_whenAdded_shouldWork(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addFirst(2);
         assertEquals(2, (int)list.getFirst());
@@ -99,7 +96,6 @@ public class SinglyLinkedListTest {
      */
     @Test
     public void addLast_whenAdded_shouldWork(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addLast(2);
         assertEquals(2, (int)list.getLast());
@@ -110,7 +106,6 @@ public class SinglyLinkedListTest {
      */
     @Test
     public void addAll_whenCollectionAdded_shouldWork(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addLast(2);
         List<Integer> list2 = Arrays.asList(1,2,3,4,5);
@@ -124,7 +119,6 @@ public class SinglyLinkedListTest {
      */
     @Test
     public void insertAtIndex_whenAdded_shouldWork(){
-        LinkedList<Integer> list = new SinglyLinkedList<>();
         list.addLast(1);
         list.addLast(2);
         list.insertAtIndex(5, 2);
