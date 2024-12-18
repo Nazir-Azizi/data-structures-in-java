@@ -49,6 +49,14 @@ public abstract class LinkedList<T extends Object> {
         return head.data;
     }
     /*
+     * returns the data of the last node (tail)
+     */
+    public T getLast(){
+        if (tail == null)
+            return null;
+        return tail.data;
+    }
+    /*
      * contains checks if there exist any element 
      * with the specified data
      */
@@ -88,12 +96,6 @@ public abstract class LinkedList<T extends Object> {
         }
         str += "null";
         return str;
-    }
-    /*
-     * returns the data of the last node (tail)
-     */
-    public T getLast(){
-        return tail.data;
     }
     /*
     * addFirst is supposed to create a node with the 

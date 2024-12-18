@@ -44,6 +44,8 @@ class SinglyLinkedList<T extends Object> extends LinkedList<T>{
      */
     public void addAll(Collection<T> collection){
         Iterator<T> it = collection.iterator();
+        if (head == null)
+            addFirst(it.next());
         Node current = tail;
         while(it.hasNext()){
             Node newNode = new Node(it.next());
@@ -60,13 +62,17 @@ class SinglyLinkedList<T extends Object> extends LinkedList<T>{
      * because it has to connect the new node to the chain
      */
     public boolean insertAtIndex(T data, int location){
-        if (location < 1){
+        if (location < 1 || location > size + 1)
             return false;
-        }else if (location == 1){
+        else if (location == 1){
             addFirst(data);
-        }else if (location > size){
+            return true;
+        }
+        else if (location == size + 1){
             addLast(data);
-        }else{
+            return true;
+        }
+        else{
             Node newNode = new Node(data);
             int count = 1;
             Node current = head;
@@ -91,7 +97,7 @@ class SinglyLinkedList<T extends Object> extends LinkedList<T>{
         }
         Node current = head;
         int count = 1;
-        while (count < index){
+        while (count != index){
             current = current.next;
             count++;
         }
