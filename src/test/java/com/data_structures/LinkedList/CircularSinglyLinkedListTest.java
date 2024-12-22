@@ -61,7 +61,6 @@ public class CircularSinglyLinkedListTest {
         list.add(1);
         list.add(2);
         list.add(3);
-        System.out.println(list);
         list.removeLast();
         assertEquals(2, (int)list.getLast());
     }

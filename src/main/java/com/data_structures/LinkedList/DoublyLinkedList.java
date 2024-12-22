@@ -130,10 +130,28 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
     }
     @Override
     public boolean removeValue(T data) {
-        return true;
+        int index = 0;
+        Node current = head;
+        while (current.data != data){
+            current = current.next;
+            index++;
+        }
+        return removeAt(index);
     }
     @Override
     public void reverse() {
-
+        if (head == null || size == 1)
+            return;
+        tail = head;
+        Node current = head;
+        while (current.next != null){
+            Node temp = current.next;
+            current.next = current.prev;
+            current.prev = temp;
+            current = current.prev;
+        }
+        current.next = current.prev;
+        current.prev = null;
+        head = current;
     }
 }
