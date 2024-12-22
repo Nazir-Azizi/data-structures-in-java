@@ -88,6 +88,8 @@ public abstract class LinkedList<T extends Object> {
      */
     @Override
     public String toString(){
+        if (head == null)
+            return "";
         Node current = head;
         String str = "";
         while (current != null){
