@@ -3,7 +3,7 @@ package com.data_structures.LinkedList;
 import java.util.Collection;
 import java.util.Iterator;
 
-class SinglyLinkedList<T extends Object> extends LinkedList<T>{
+class SinglyLinkedList<T> extends LinkedList<T>{
     
     /*
      * addFirst adds the new Node at the beginning of LinkedList
@@ -187,7 +187,9 @@ class SinglyLinkedList<T extends Object> extends LinkedList<T>{
         size--;
         return true;
     }
-    
+    /*
+     * reverse method reverses the list
+     */
     public void reverse(){
         if (head == null || size == 1)
             return;

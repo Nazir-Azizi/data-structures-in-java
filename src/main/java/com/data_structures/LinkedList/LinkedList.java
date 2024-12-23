@@ -2,7 +2,7 @@ package com.data_structures.LinkedList;
 
 import java.util.Collection;
 
-public abstract class LinkedList<T extends Object> {
+public abstract class LinkedList<T> {
     
     
     /*

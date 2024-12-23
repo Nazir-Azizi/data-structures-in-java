@@ -11,15 +11,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+/*
+ * Unit test for DoublyLinkedList
+ */
 public class DoublyLinkedListTest {
     
     LinkedList<Integer> list;
 
+    /*
+     * sets up the list
+     */
     @Before
     public void setUp(){
         list = new DoublyLinkedList<>();
     }
 
+    /*
+     * test for addAll method
+     */
     @Test
     public void addAll_whenListEmpty_shouldWork(){
         List<Integer> collection = new ArrayList<>();
@@ -29,6 +38,9 @@ public class DoublyLinkedListTest {
         list.addAll(collection);
         assertEquals(3, (int)list.getLast());
     }
+    /*
+     * test for getSize method
+     */
     @Test
     public void getSize_whenCalled_shouldWork(){
         List<Integer> collection = new ArrayList<>();
@@ -38,6 +50,9 @@ public class DoublyLinkedListTest {
         list.addAll(collection);
         assertEquals(3, (int)list.getSize());
     }
+    /*
+     * test for removeFirst method
+     */
     @Test
     public void removeFirst_whenFirstRemoved(){
         List<Integer> collection = new ArrayList<>();
@@ -48,6 +63,9 @@ public class DoublyLinkedListTest {
         list.removeFirst();
         assertEquals(2, (int)list.getFirst());
     }
+    /*
+     * test for removeLast method
+     */
     @Test
     public void removeLast_shewLastRemoved(){
         List<Integer> collection = new ArrayList<>();
@@ -58,6 +76,9 @@ public class DoublyLinkedListTest {
         list.removeLast();
         assertEquals(2, (int)list.getLast());
     }
+    /*
+     * test for removeAt method
+     */
     @Test
     public void removeAt_whenCalled_shouldRemove(){
         List<Integer> collection = new ArrayList<>();
@@ -69,6 +90,9 @@ public class DoublyLinkedListTest {
         list.removeAt(2);
         assertEquals(3, (int)list.getAt(2));
     }
+    /*
+     * test for insertAtIndex method
+     */
     @Test
     public void insertAtIndex_whenCalled(){
         List<Integer> collection = new ArrayList<>();
@@ -89,6 +113,9 @@ public class DoublyLinkedListTest {
         list.insertAtIndex(10, 4);
         assertEquals(10, (int)list.getAt(4));
     }
+    /*
+     * test for removeValue method
+     */
     @Test
     public void removeValue_test(){
         list.addLast(1);
@@ -98,6 +125,9 @@ public class DoublyLinkedListTest {
         list.removeValue(2);
         assertEquals(3, (int)list.getAt(2));
     }
+    /*
+     * test for reverse method 
+     */
     @Test
     public void reverse_test(){
         list.addLast(1);

@@ -3,9 +3,12 @@ package com.data_structures.LinkedList;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
+public class DoublyLinkedList<T> extends LinkedList<T> {
 
     
+    /*
+     * addFirst adds the data at the beginning of the list
+     */
     @Override
     public void addFirst(T data) {
         Node newNode = new Node(data);
@@ -19,6 +22,9 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         newNode.next = head;
         head = newNode;
     }
+    /*
+     * addLast adds data at the end of the list
+     */
     @Override
     public void addLast(T data) {
         Node newNode = new Node(data);
@@ -32,6 +38,10 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         newNode.prev = tail;
         tail = newNode;
     }
+    /*
+     * addAll method takes a Collection and adds all the data
+     * from the Collection to the list in order
+     */
     @Override
     public void addAll(Collection<T> collection){
         Iterator<T> it = collection.iterator();
@@ -47,6 +57,10 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
             size++;
         }
     }
+    /*
+     * insertAtIndex methods takes the data and the index which the 
+     * data should be inserted in
+     */
     @Override
     public boolean insertAtIndex(T data, int location){
         if (location < 1 || location > size + 1)
@@ -72,6 +86,9 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         size++;
         return true;
     }
+    /*
+     * getAt method returns the data in a specified index
+     */
     @Override
     public T getAt(int index){
         if (index < 1 || index > size)
@@ -88,6 +105,9 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         }
         return current.data;
     }
+    /*
+     * removerFirst removes the first node in the list
+     */
     @Override
     public boolean removeFirst() {
         if (head == null)
@@ -97,6 +117,9 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         size--;
         return true;
     }
+    /*
+     * removeLast removes the last node
+     */
     @Override
     public boolean removeLast() {
         if (tail == null)
@@ -107,6 +130,9 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         size--;
         return true;
     }
+    /*
+     * removeAt removes the data in the specified index
+     */
     @Override
     public boolean removeAt(int index) {
         if (index < 1 || index > size)
@@ -128,6 +154,9 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         size--;
         return true;
     }
+    /*
+     * removeValue removes the node according to value
+     */
     @Override
     public boolean removeValue(T data) {
         int index = 0;
@@ -138,6 +167,9 @@ public class DoublyLinkedList<T extends Object> extends LinkedList<T> {
         }
         return removeAt(index);
     }
+    /*
+     * reverse method reverses the list
+     */
     @Override
     public void reverse() {
         if (head == null || size == 1)
