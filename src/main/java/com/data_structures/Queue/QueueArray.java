@@ -1,14 +1,11 @@
-package com.data_structures.Stack;
+package com.data_structures.Queue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StackArray<T> implements Stack<T>{
-    /*
-     * ArrayList is used to contain the data
-     */
+public class QueueArray<T> implements Queue<T> {
     List<T> list;
-    StackArray(){
+    QueueArray(){
         list = new ArrayList<>();
     }
     @Override
@@ -21,19 +18,16 @@ public class StackArray<T> implements Stack<T>{
     }
     @Override
     public void push(T data) {
-        list.add(data);
+        list.addLast(data);
     }
-
     @Override
     public T peek() {
-        return list.getLast();
+        return list.getFirst();
     }
-
     @Override
     public T pop() {
-        T tempData = list.getLast();
-        list.removeLast();  
+        T tempData = list.getFirst();
+        list.removeFirst();
         return tempData;
     }
-    
 }

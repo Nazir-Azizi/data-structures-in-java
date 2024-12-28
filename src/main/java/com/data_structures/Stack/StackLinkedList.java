@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 public class StackLinkedList<T> implements Stack<T>{
 
+    int size;
     private class Node{
         Node next;
         T data;
@@ -13,8 +14,17 @@ public class StackLinkedList<T> implements Stack<T>{
     }
     private Node last;
     @Override
+    public boolean isEmpty() {
+        return last == null;
+    }
+    @Override
+    public int getSize() {
+        return size;
+    }
+    @Override
     public void push(T data) {
         Node newNode = new Node(data);
+        size++;
         if (last == null){
             last = newNode;
             return;
@@ -31,10 +41,13 @@ public class StackLinkedList<T> implements Stack<T>{
     }
 
     @Override
-    public void pop() {
+    public T pop() {
         if (last == null)
             throw new NoSuchElementException("Stack is empty");
+        Node temp = last;
         last = last.next;
+        size--;
+        return temp.data;
     }
     
 }
