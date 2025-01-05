@@ -19,6 +19,9 @@ public abstract class BinaryTree<T extends Comparable<T>> {
     public abstract boolean search(T data);
     public abstract boolean delete(T data);
 
+    public boolean isEmpty(){
+        return root == null;
+    }
     public void preOrderTraversal(){
         preOrderTraversalImplementation(root);
     }

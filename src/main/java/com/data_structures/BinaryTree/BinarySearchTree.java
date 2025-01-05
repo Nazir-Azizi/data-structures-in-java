@@ -13,7 +13,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
     }
     @Override
     public boolean delete(T data) {
-        return false;   
+        return false;
     }
 
     private TreeNode insertImplementation(TreeNode root, T data){
