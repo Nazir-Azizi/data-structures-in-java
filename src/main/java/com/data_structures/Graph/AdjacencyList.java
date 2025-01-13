@@ -2,6 +2,7 @@ package com.data_structures.Graph;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 class AdjacencyList{
     LinkedList<Integer>[] list;
@@ -36,6 +37,23 @@ class AdjacencyList{
                 if (!visited[v]){
                     visited[v] = true;
                     queue.offer(v);
+                }
+            }
+        }
+    }
+    public void depthFirstSearch(int vartix){
+        boolean[] visited = new boolean[list.length];
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(vartix);
+        visited[vartix] = true;
+        while (!stack.isEmpty()){
+            int u = stack.pop();
+            System.out.print(u + " ");
+            for(int v : list[u]){
+                if (!visited[v]){
+                    stack.push(v);
+                    visited[v] = true;
                 }
             }
         }

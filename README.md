@@ -1,13 +1,20 @@
 # Data Structure in Java
-## Implementaion of Data Structures
+## A beginner friendly implementaion of Data Structures
 ### LinkedList
 - SinglyLinkedList
 - DoublyLinkedList
 - CircularLinkedList
+### Queue
 - Queue using ArrayList
 - Queue using LinkedList
+### Stack
 - Stack using ArrayList
 - Stack using LinkedList
+### Tree
 - BinarySearchTree
+### Heap
 - MaxHeap
 - MinHeap
+### Graph
+- AdjacencyListGraph
+- AdjacencyMatrixGraph
